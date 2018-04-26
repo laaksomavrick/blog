@@ -1,0 +1,30 @@
+front end:
+  # of tickets issues ie 3 / 24 => how many spots in parking lot?
+  ticket ids, rate, pay as a list
+  btns => pay selected
+
+
+            |  ticket 6
+  0 / 20    |  ticket 7
+            |  ticket 8
+
+  click on ticket => modal w/ details, button to pay
+
+back end
+  flow
+    user creates a new ticket
+      => check if space is available
+    add ticket to list
+    user clicks on ticket
+    get ticket details
+    pay ticket
+      => check ticket is valid; check card is valid; return true
+
+
+what browsers are u supporting?
+how many parking spaces r in the parking lot?
+clarify rate increase (50% of prev or 50% of base)
+  1 hr => $3
+  3 hr => $4.50
+  6 hr => $6.75
+  ALL  => $10.15 (rounded)
