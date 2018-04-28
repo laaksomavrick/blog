@@ -1,0 +1,15 @@
+body {
+  margin: 0;
+  background: #f6f7fa;
+  font-family: 'Roboto', sans-serif;
+}
+
+.app {
+  height: 100vh;
+  width: 100vw;
+
+  &__test {
+    color: red;
+  }
+
+}

@@ -1,3 +1,6 @@
+USER CREATES A TICKET WITH A RATE
+
+
 front end:
   # of tickets issues ie 3 / 24 => how many spots in parking lot?
   ticket ids, rate, pay as a list
@@ -9,6 +12,7 @@ front end:
             |  ticket 8
 
   click on ticket => modal w/ details, button to pay
+  ticket => red, yellow, green
 
 back end
   flow
@@ -28,3 +32,16 @@ clarify rate increase (50% of prev or 50% of base)
   3 hr => $4.50
   6 hr => $6.75
   ALL  => $10.15 (rounded)
+
+a ticket has a:
+  id 
+  rate enum
+
+a payment has a
+  id
+  fk
+  paid bool
+
+mysql database with db called 'parkinglot'
+npm install knex -g (migrations cli)
+knex migrate:latest
