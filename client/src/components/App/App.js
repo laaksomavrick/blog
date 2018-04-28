@@ -10,7 +10,13 @@ import {
 
 import './App.scss'
 
+import { hello } from 'common/utils.js'
+
 export default class App extends React.Component {
+
+  componentDidMount() {
+    hello()
+  }
 
   render() {
     return (

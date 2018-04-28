@@ -13,6 +13,11 @@ module.exports = {
       "/api/**": "http://localhost:3001",
     }
   },
+  resolve: {
+    alias: {
+      common: path.resolve(__dirname, 'common')
+    },
+  },
   module: {
     rules: [
       { 

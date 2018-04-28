@@ -13,6 +13,9 @@ front end:
 
   click on ticket => modal w/ details, button to pay
   ticket => red, yellow, green
+    red: overdue
+    yellow: unpaid, not overdue
+    green: paid, not overdue
 
 back end
   flow
