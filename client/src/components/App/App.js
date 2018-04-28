@@ -1,21 +1,24 @@
 // App.js
 
 import React from 'react'
+import { connect } from 'react-redux'
 import {
   BrowserRouter as Router,
   Route,
-  Redirect,
-  Switch
 } from 'react-router-dom'
+
+import { startup } from '../../actions/app.js'
 
 import './App.scss'
 
-import { hello } from 'common/utils.js'
+//TODO remove
+//import { hello } from 'common/utils.js'
 
-export default class App extends React.Component {
+class App extends React.Component {
 
   componentDidMount() {
-    hello()
+    const { startup } = this.props
+    startup()
   }
 
   render() {
@@ -34,3 +37,11 @@ export default class App extends React.Component {
   }
 
 }
+
+const map_dispatch_to_props = dispatch => {
+  return {
+    startup: () => { dispatch(startup()) }
+  }
+}
+
+export default connect(null, map_dispatch_to_props)(App)
