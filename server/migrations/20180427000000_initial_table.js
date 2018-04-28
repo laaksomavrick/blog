@@ -17,5 +17,8 @@ exports.up = function(knex, Promise) {
 };
 
 exports.down = function(knex, Promise) {
-  return knex.schema.dropTable('payments').then(() => { knex.schema.dropTable('tickets') })
+  return knex.schema.dropTable('payments')
+    .then(() => { 
+      return knex.schema.dropTable('tickets') 
+    })
 };

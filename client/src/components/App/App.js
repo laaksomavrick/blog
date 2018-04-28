@@ -9,10 +9,9 @@ import {
 
 import { startup } from '../../actions/app.js'
 
-import './App.scss'
+import Tickets from '../Tickets/Tickets.js'
 
-//TODO remove
-//import { hello } from 'common/utils.js'
+import './App.scss'
 
 class App extends React.Component {
 
@@ -24,13 +23,8 @@ class App extends React.Component {
   render() {
     return (
       <Router>
-        <div className="app-container">
-          <Route component={() => (
-            <div className="app__test">
-              <h1>hello, world!</h1>
-            </div>
-          )} 
-          />
+        <div className="app">
+          <Route component={Tickets} />
         </div>
       </Router>
     )

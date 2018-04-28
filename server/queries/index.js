@@ -45,8 +45,8 @@ export default class Query {
   }
 
   get = async () => {
-    const record = await db.table(this.TABLE).select()
-    return record !== undefined ? record : null
+    const rows = await db.table(this.TABLE).select()
+    return rows !== undefined ? rows : null
   }
 
 }
