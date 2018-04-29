@@ -1,0 +1,16 @@
+.modal {
+
+  & > * {
+    width: 35%;
+    min-width: 300px;
+  }
+
+  &__content {
+
+    & > * {
+      width: 100%;
+    }
+
+  }
+
+}

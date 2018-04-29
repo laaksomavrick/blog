@@ -35,6 +35,7 @@ class TicketControlPanel extends React.Component {
 
   render() {
 
+    //TODO: DISABLE INPUTS FOR PARTICULAR STATES
     const className = "ticket-control-panel"
 
     return (

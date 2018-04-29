@@ -10,6 +10,7 @@ import {
 import { startup } from '../../actions/app.js'
 
 import Tickets from '../Tickets/Tickets.js'
+import CreateTicketModal from '../CreateTicketModal/CreateTicketModal.js'
 
 import './App.scss'
 
@@ -22,11 +23,12 @@ class App extends React.Component {
 
   render() {
     return (
-      <Router>
-        <div className="app">
+      <div className="app">
+        <Router>
           <Route component={Tickets} />
-        </div>
-      </Router>
+        </Router>
+        <CreateTicketModal />
+      </div>
     )
   }
 
