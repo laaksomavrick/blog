@@ -52,6 +52,7 @@ class CreateTicketModal extends React.Component {
         <TextField
           name="rate"
           label="Ticket rate"
+          margin="normal"
           select
           SelectProps={{
             native: true

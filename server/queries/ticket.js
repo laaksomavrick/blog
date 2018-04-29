@@ -22,7 +22,12 @@ export default class Ticket extends Query {
   }
 
   first_with_payment = async (conditions) => {
-    let record = await this.first(conditions)
+    let record = await db.table(this.TABLE)
+      .join('payments', 'payments.ticket_id', '=', `${this.TABLE}.id`)
+      .select(`${this.TABLE}.*`, `payments.paid`)
+      .where(`${this.TABLE}.id`, conditions.id)
+      .limit(1)
+    record = record[0]
     record.owed = get_owed(record) 
     return record
   }
