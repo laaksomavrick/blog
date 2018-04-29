@@ -3,6 +3,8 @@
 import Ticket from '../queries/ticket'
 import Payment from '../queries/payment'
 
+import { spots_available } from '../../common/utils'
+
 export default class TicketController {
 
   static index = async (req, res, next) => {
@@ -28,14 +30,19 @@ export default class TicketController {
 
   static create = async (req, res, next) => {
     try {
-      //TODO validation
+
       const ticket = new Ticket()
       const payment = new Payment()
+      const currently_occupied = await ticket.count('active')
+
+      if (currently_occupied >= spots_available()) {
+        throw new Error("No parking spots are available")
+      }
 
       let data = await ticket.create(req.body)
       data.paid = await payment.create({ticket_id: data.id}).paid
-
       res.send({ data })
+
     } catch (e) {
       next(e)
     }

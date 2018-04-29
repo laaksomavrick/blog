@@ -27,6 +27,11 @@ export default class Query {
     return record !== undefined ? record : null
   }
 
+  count = async (condition) => {
+    const record = await db.table(this.TABLE).count(condition)
+    return record !== undefined ? Object.values(record[0])[0] : null
+  }
+
   find_by_id = async (id) => {
     const record = await db.table(this.TABLE).where({ id }).first()
     return record !== undefined ? record : null
@@ -34,7 +39,7 @@ export default class Query {
 
   create = async (obj) => {
     const rows = await db.table(this.TABLE).insert(obj)
-    const record = await this.first(obj)
+    const record = await this.first({id: rows[0]})
     return record !== undefined ? record : null
   }
 
