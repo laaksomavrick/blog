@@ -3,8 +3,6 @@
 import React from 'react'
 
 import Typography from 'material-ui/Typography'
-import IconButton from 'material-ui/IconButton'
-import ArrowBackIcon from 'material-ui-icons/ArrowBack'
 
 import './TicketListHeader.scss'
 

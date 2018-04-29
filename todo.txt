@@ -45,6 +45,8 @@ a payment has a
   fk
   paid bool
 
+
 mysql database with db called 'parkinglot'
 npm install knex -g (migrations cli)
 knex migrate:latest
+TODO: knex seed

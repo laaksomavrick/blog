@@ -1,0 +1,14 @@
+.ticket-control-panel {
+  display: flex;
+  justify-content: center;
+
+  margin: auto;
+  width: 30%;
+  min-width: 325px;
+  padding: 20px;
+}
+
+.ticket-control-panel > * {
+  margin-left: 5px!important;
+  margin-right: 5px!important;
+}

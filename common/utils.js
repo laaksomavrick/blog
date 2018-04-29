@@ -27,6 +27,6 @@ export const get_owed = ticket => {
   }
 }
 
-export const spots_available = occupied => {
-  return occupied < 24
+export const spots_available = () => {
+  return 24
 }

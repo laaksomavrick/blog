@@ -3,6 +3,7 @@ exports.up = function(knex, Promise) {
   return knex.schema.createTable('tickets', function (t) {
     t.increments().primary()
     t.enu('rate', [0, 1, 2, 3]).notNullable()
+    t.boolean('active').notNullable().default(true)
     t.timestamps(true, true)
   })
   .then(() => {

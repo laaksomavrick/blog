@@ -5,17 +5,18 @@ import PropTypes from 'prop-types'
 
 import Divider from 'material-ui/Divider'
 import { ListItem, ListItemText } from 'material-ui/List'
-import Checkbox from 'material-ui/Checkbox'
-import IconButton from 'material-ui/IconButton'
 
 import './TicketListItem.scss'
 
-const TicketListDivider = ({ index }) => {
-  if (index !== 0) {
-    return <Divider inset />
-  }
-  return null
-} 
+const TicketListDivider = ({ index }) => (
+  index !== 0 ? (
+    <Divider inset />
+  ) : (
+    null
+  )
+)
+
+//States: inactive (left), red (overdue), yellow(unpaid, not overdue), green(paid, not overdue)
 
 const TicketListItem = ({ ticket, index }) => (
   <div className="ticket-list-item">
@@ -24,11 +25,8 @@ const TicketListItem = ({ ticket, index }) => (
       key={ticket.id}
       button
     >
-      <Checkbox
-        tabIndex={-1}
-      />
       <ListItemText
-        primary={ticket.name}
+        primary={`Ticket #${ticket.id}`}
       />
     </ListItem>
   </div>
