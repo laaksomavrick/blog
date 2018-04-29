@@ -33,7 +33,7 @@ export default class TicketController {
       const payment = new Payment()
 
       let data = await ticket.create(req.body)
-      const pay_data = await payment.create({ticket_id: data.id}).paid
+      data.paid = await payment.create({ticket_id: data.id}).paid
 
       res.send({ data })
     } catch (e) {
