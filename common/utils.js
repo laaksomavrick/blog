@@ -30,3 +30,7 @@ export const get_owed = ticket => {
 export const spots_available = () => {
   return 24
 }
+
+export const validate_cc = (cc) => {
+  return cc != undefined
+}

@@ -39,10 +39,12 @@ class Modal extends React.Component {
     const name = e.target.name
     const value = e.target.value
 
-    const data = { [name]: value }
+    const data = { ...this.state.data, [name]: value }
 
     this.setState({ data }, () => {
-      this.check_and_set_error()
+      if (this.state.error) {
+        this.check_and_set_error()
+      }
     })
   }
 
@@ -51,10 +53,11 @@ class Modal extends React.Component {
   }
 
   check_and_set_error = () => {
+    //TODO: better err handling per child obj, instead of all
     let error = false
-    Object.keys(this.state).forEach((k) => {
+    Object.keys(this.state.data).forEach((k) => {
       if (error === false) {
-        error = this.state[k] === undefined
+        error = this.state.data[k] == undefined
       }
     })
     this.setState({ error })
@@ -81,7 +84,7 @@ class Modal extends React.Component {
         <DialogTitle>{title}</DialogTitle>
         <DialogContent className="modal__content">
           {React.Children.map(children, child => (
-            React.cloneElement(child, { onChange: this.handle_change })
+            React.cloneElement(child, { onChange: this.handle_change, error })
             )
           )}
         </DialogContent>

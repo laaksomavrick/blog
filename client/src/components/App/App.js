@@ -11,6 +11,7 @@ import { startup } from '../../actions/app.js'
 
 import Tickets from '../Tickets/Tickets.js'
 import CreateTicketModal from '../CreateTicketModal/CreateTicketModal.js'
+import PayTicketModal from '../PayTicketModal/PayTicketModal.js'
 
 import './App.scss'
 
@@ -28,6 +29,7 @@ class App extends React.Component {
           <Route component={Tickets} />
         </Router>
         <CreateTicketModal />
+        <PayTicketModal />
       </div>
     )
   }

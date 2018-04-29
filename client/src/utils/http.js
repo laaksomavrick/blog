@@ -15,3 +15,12 @@ export const post = (url, body) => {
     credentials: "same-origin"
   })
 }
+
+export const put = (url, body) => {
+  return fetch(`/api/${url}`, {
+    method: 'PUT',
+    body: JSON.stringify(body),
+    headers: { "Content-Type": "application/json" },
+    credentials: "same-origin"
+  })
+}
