@@ -48,5 +48,15 @@ export default class TicketController {
     }
   }
 
+  static update = async (req, res, next) => {
+    try {
+      const ticket = new Ticket()
+      let data = await ticket.update({ id: req.params.id }, req.body)
+      res.send({ data })
+    } catch (e) {
+      next(e)
+    }
+  }
+
 }
 

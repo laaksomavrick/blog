@@ -34,7 +34,7 @@ export const create_ticket = data => {
 export const put_ticket = data => {
   return async dispatch => {
     try {
-      const response = await put('tickets', data)
+      const response = await put(`tickets/${data.id}`, data)
       const json = await response.json()
       dispatch(update_ticket(json.data))
     } catch (e) {
