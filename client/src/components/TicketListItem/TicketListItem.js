@@ -27,6 +27,11 @@ const TicketListItem = ({ ticket, index }) => (
     >
       <ListItemText
         primary={`Ticket #${ticket.id}`}
+        secondary={`
+          in lot: ${!!ticket.active}, 
+          paid: ${!!ticket.paid},
+          owing: ${ticket.owed}
+        `}
       />
     </ListItem>
   </div>

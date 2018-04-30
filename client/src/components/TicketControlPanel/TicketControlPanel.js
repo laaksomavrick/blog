@@ -11,6 +11,8 @@ import {
   set_leave_modal
 } from '../../actions/ui.js'
 
+import { spots_available } from 'common/utils'
+
 import './TicketControlPanel.scss'
 
 class TicketControlPanel extends React.Component {
@@ -35,21 +37,19 @@ class TicketControlPanel extends React.Component {
 
   render() {
 
-    //TODO: DISABLE INPUTS FOR PARTICULAR STATES
-    // create if limit hit
-    // pay if nothing to pay
-    // leave if none active
+    const { create_enabled, pay_enabled, leave_enabled } = this.props
+
     const className = "ticket-control-panel"
 
     return (
       <div className={className}>
-        <Button name="create" onClick={this.handle_click}>
+        <Button disabled={!create_enabled} name="create" onClick={this.handle_click}>
           Create
         </Button>
-        <Button name="pay" onClick={this.handle_click}>
+        <Button disabled={!pay_enabled} name="pay" onClick={this.handle_click}>
           Pay
         </Button>
-        <Button name="leave" onClick={this.handle_click}>
+        <Button disabled={!leave_enabled} name="leave" onClick={this.handle_click}>
           Leave
         </Button>
       </div>
@@ -67,4 +67,12 @@ const map_dispatch_to_props = dispatch => {
   }
 }
 
-export default connect(null, map_dispatch_to_props)(TicketControlPanel)
+const map_state_to_props = state => {
+  return {
+    leave_enabled: state.tickets.filter(t => t.paid == 1 && t.active == 1).length > 0,
+    pay_enabled: state.tickets.filter(t => t.paid == 0).length > 0,
+    create_enabled: state.tickets.length < spots_available()
+  }
+}
+
+export default connect(map_state_to_props, map_dispatch_to_props)(TicketControlPanel)
