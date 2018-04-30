@@ -60,6 +60,9 @@ class Modal extends React.Component {
         error = this.state.data[k] == undefined
       }
     })
+    if (Object.keys(this.state.data).length === 0) {
+      error = true
+    }
     this.setState({ error })
     return error
   }
