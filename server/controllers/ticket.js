@@ -56,8 +56,8 @@ export default class TicketController {
       const ticket = new Ticket()
 
       if (req.body.active) {
-        const check = await ticket.first_with_payment({id: req.body.id}).paid
-        if (check === false) {
+        const check = await ticket.first_with_payment({id: req.body.id})
+        if (check.paid === false) {
           throw new Error("Ticket is unpaid, cannot update")
         }
       }
