@@ -27,6 +27,7 @@ class PayTicketModal extends React.Component {
         close={close}
         submit={submit}
         default_state={default_state}
+        strict={true}
         title="Pay Ticket"
         button="pay"
       >

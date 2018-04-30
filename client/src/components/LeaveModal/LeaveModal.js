@@ -18,7 +18,6 @@ class LeaveModal extends React.Component {
 
     const { open, close, submit, leavable } = this.props
 
-    //TODO bug; loading spinner
     const first_id = leavable[0] ? leavable[0].id : null
     const default_state = { id: first_id, active: 0 }
 
@@ -28,6 +27,7 @@ class LeaveModal extends React.Component {
         close={close}
         submit={submit}
         default_state={default_state}
+        strict={true}
         title="Leave"
         button="leave"
       >
