@@ -24,6 +24,7 @@ const TicketListItem = ({ ticket, index }) => (
     <ListItem
       key={ticket.id}
       button
+      disabled={!ticket.active}
     >
       <ListItemText
         primary={`Ticket #${ticket.id}`}
