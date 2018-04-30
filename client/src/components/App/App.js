@@ -7,6 +7,8 @@ import {
   Route,
 } from 'react-router-dom'
 
+import Fade from 'material-ui/transitions/Fade'
+
 import { startup } from '../../actions/app.js'
 
 import Tickets from '../Tickets/Tickets.js'
@@ -24,14 +26,29 @@ class App extends React.Component {
   }
 
   render() {
-    return (
-      <div className="app">
+
+    const { loading } = this.props
+
+    const element = loading === false ? (
+      <>
         <Router>
           <Route component={Tickets} />
         </Router>
         <CreateTicketModal />
         <PayTicketModal />
         <LeaveModal />
+      </>
+    ) : (
+      <Fade in={true}>
+        <div className="app__loading">
+            Loading...
+        </div>
+      </Fade>
+    )
+
+    return (
+      <div className="app">
+        {element}
       </div>
     )
   }
@@ -44,4 +61,10 @@ const map_dispatch_to_props = dispatch => {
   }
 }
 
-export default connect(null, map_dispatch_to_props)(App)
+const map_state_to_props = state => {
+  return {
+    loading: state.ui.loading
+  }
+}
+
+export default connect(map_state_to_props, map_dispatch_to_props)(App)

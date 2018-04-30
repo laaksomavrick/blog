@@ -18,7 +18,6 @@ class PayTicketModal extends React.Component {
 
     const { open, close, submit, unpaid } = this.props
 
-    //TODO bug; loading spinner
     const first_id = unpaid[0] ? unpaid[0].id : null
     const default_state = { ticket_id: first_id, credit_card: null }
 

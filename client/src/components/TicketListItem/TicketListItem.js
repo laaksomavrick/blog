@@ -30,7 +30,7 @@ const TicketListItem = ({ ticket, index }) => (
         secondary={`
           in lot: ${!!ticket.active}, 
           paid: ${!!ticket.paid},
-          owing: ${ticket.owed}
+          owing: ${ticket.owed ? ticket.owed : 0}
         `}
       />
     </ListItem>

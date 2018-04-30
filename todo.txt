@@ -48,5 +48,5 @@ a payment has a
 
 mysql database with db called 'parkinglot'
 npm install knex -g (migrations cli)
-knex migrate:latest
-TODO: knex seed
+knex migrate:latest from /server folder
+npm start

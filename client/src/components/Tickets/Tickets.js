@@ -37,7 +37,7 @@ class Tickets extends React.Component {
 
 const map_state_to_props = state => {
   return {
-    tickets: state.tickets,
+    tickets: state.tickets.sort((a, b) => b.id < a.id),
     current: state.tickets.filter(t => t.active == true).length,
     total: spots_available()
   }
