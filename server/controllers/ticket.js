@@ -62,7 +62,8 @@ export default class TicketController {
         }
       }
 
-      let data = await ticket.update({ id: req.params.id }, req.body)
+      let updated = await ticket.update({ id: req.params.id }, req.body)
+      let data = await ticket.first_with_payment({ id: updated.id })
       data.owed = get_owed(data)
       res.send({ data })
 
