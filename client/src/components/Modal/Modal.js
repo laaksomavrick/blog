@@ -14,6 +14,15 @@ import './Modal.scss'
 
 class Modal extends React.Component {
 
+  static getDerivedStateFromProps(props, current_state) {
+    if (props.default_state !== current_state.data) {
+      return {
+        data: props.default_state,
+        error: false
+      }
+    }
+  }
+
   state = {
     data: this.props.default_state,
     error: false

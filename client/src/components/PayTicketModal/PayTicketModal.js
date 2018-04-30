@@ -21,6 +21,9 @@ class PayTicketModal extends React.Component {
     const first_id = unpaid[0] ? unpaid[0].id : null
     const default_state = { ticket_id: first_id, credit_card: null }
 
+    console.log("rerendering")
+    console.log(default_state)
+
     return (
       <Modal
         open={open}
