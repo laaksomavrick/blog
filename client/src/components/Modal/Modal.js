@@ -20,6 +20,8 @@ class Modal extends React.Component {
         data: props.default_state,
         error: false
       }
+    } else {
+      return null
     }
   }
 
