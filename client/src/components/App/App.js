@@ -41,7 +41,6 @@ class App extends React.Component {
     ) : (
       <Fade in={true}>
         <div className="app__loading">
-            Loading...
         </div>
       </Fade>
     )
