@@ -9,6 +9,7 @@ const config = {
 const isDev = config.mode === 'development'
 
 module.exports = {
+  mode: isDev ? 'development' : 'production',
   entry: './client/src/index.js',
   output: {
     path: path.resolve(__dirname, 'client/dist/'),
