@@ -13,8 +13,7 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, 'client/dist/'),
     publicPath: '/',
-    //filename: `[name]${isDev ? '' : '.[chunkhash]'}.js`
-    filename: 'bundle.js'
+    filename: `[name]${isDev ? '' : '.[chunkhash]'}.js`
   },
   plugins: [
     new CleanWebpackPlugin(['client/dist']),
@@ -35,8 +34,11 @@ module.exports = {
       }
     }
   },*/
+  serve: {
+    content: 'client/dist'
+  },
   devServer: {
-    contentBase: path.resolve(__dirname, 'client'),
+    contentBase: path.resolve(__dirname, 'client/dist'),
     historyApiFallback: true,
     proxy: {
       "/api/**": "http://localhost:3001",
