@@ -1,8 +1,8 @@
-const _ = dotenv.config()
-import dotenv from 'dotenv'
 import express from 'express'
 import body_parser from 'body-parser'
 
+import './config';
+import db from './database';
 import routes from './routes'
 
 const app = express()
@@ -26,5 +26,11 @@ app.use((err, req, res, next) => {
   res.status(500).send({ error })
 })
 
-app.listen(process.env.EXPRESS_PORT, process.env.EXPRESS_HOST)
-console.log(`Running server on http://${process.env.EXPRESS_HOST}:${process.env.EXPRESS_PORT}`)
+db.on('error', console.error.bind(console, 'connection error: '))
+
+db.once('open', () => {
+  console.log(`Running database on ${process.env.DB_HOST}`)
+  app.listen(process.env.EXPRESS_PORT, process.env.EXPRESS_HOST)
+  console.log(`Running server on http://${process.env.EXPRESS_HOST}:${process.env.EXPRESS_PORT}`)
+})
+
