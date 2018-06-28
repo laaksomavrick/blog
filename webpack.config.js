@@ -1,11 +1,40 @@
-const path = require('path')
+const path = require('path');
+const webpack = require('webpack');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+
+const config = {
+  mode: process.env.WEBPACK_SERVE ? 'development' : 'production',
+}
+const isDev = config.mode === 'development'
+
 module.exports = {
   entry: './client/src/index.js',
   output: {
     path: path.resolve(__dirname, 'client/dist/'),
-    publicPath: '/dist/',
+    publicPath: '/',
+    //filename: `[name]${isDev ? '' : '.[chunkhash]'}.js`
     filename: 'bundle.js'
   },
+  plugins: [
+    new CleanWebpackPlugin(['client/dist']),
+    new HtmlWebpackPlugin({
+      template: 'client/index.html'
+    }),
+    //new webpack.HashedModuleIdsPlugin(),
+  ],
+  /*optimization: {
+    runtimeChunk: 'single',
+    splitChunks: {
+      cacheGroups: {
+        vendor: {
+          test: /[\\/]node_modules[\\/]/,
+          name: 'vendors',
+          chunks: 'all'
+        }
+      }
+    }
+  },*/
   devServer: {
     contentBase: path.resolve(__dirname, 'client'),
     historyApiFallback: true,
