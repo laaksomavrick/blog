@@ -3,6 +3,10 @@ const webpack = require('webpack');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
+const convert = require('koa-connect');
+const history = require('connect-history-api-fallback');
+const proxy = require('http-proxy-middleware');
+
 const config = {
   mode: process.env.WEBPACK_SERVE ? 'development' : 'production',
 }
@@ -35,16 +39,6 @@ module.exports = {
       }
     }
   },*/
-  serve: {
-    content: 'client/dist'
-  },
-  devServer: {
-    contentBase: path.resolve(__dirname, 'client/dist'),
-    historyApiFallback: true,
-    proxy: {
-      "/api/**": "http://localhost:3001",
-    }
-  },
   resolve: {
     alias: {
       common: path.resolve(__dirname, 'common')
@@ -88,7 +82,26 @@ module.exports = {
           }
         ]
       },
+      {
+        test: /\.css$/,
+        use: [
+          {
+            loader: "style-loader"
+          }, 
+          {
+            loader: "css-loader"
+          },
+        ]
+      }
     ]
   },
 
+}
+
+module.exports.serve = {
+  content: 'client/dist',
+  add: (app, middleware, opts) => {
+    app.use(convert(proxy('/api', { target: 'http://localhost:3001' })))
+    app.use(convert(history()))
+  }
 }

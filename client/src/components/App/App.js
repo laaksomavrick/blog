@@ -1,34 +1,39 @@
-// App.js
-
 import React from 'react'
-import { connect } from 'react-redux'
-import {
-  BrowserRouter as Router,
-  Route,
-} from 'react-router-dom'
-
+import { BrowserRouter as Router, Route } from 'react-router-dom'
+import { Container } from 'reactstrap'
+import BlogList from '../BlogList/BlogList'
+import { getPosts } from '../../api/posts'
 import './App.scss'
 
 class App extends React.Component {
 
+  constructor(props) {
+    super(props)
+    this.state = {
+      posts: []
+    }
+  }
+
+  async componentDidMount() {
+    const posts = await getPosts();
+    this.setState({
+      posts
+    })
+  }
+
   render() {
+
+    const { posts } = this.state
+
     return (
-      <div className="app">
-        <h1> Hello, world! </h1>
-      </div>
+      <Container className="app">
+        <div className="blog">
+          <BlogList posts={posts} />
+        </div>
+      </Container>
     )
   }
 
 }
 
-const mapDispatchToProps = dispatch => {
-  return {
-  }
-}
-
-const mapStateToProps = state => {
-  return {
-  }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(App)
+export default App
