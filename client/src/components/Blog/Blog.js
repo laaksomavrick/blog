@@ -3,9 +3,11 @@ import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-d
 import { Container } from 'reactstrap'
 import BlogList from '../BlogList/BlogList'
 import BlogHeader from '../BlogHeader/BlogHeader'
-import { getPosts } from '../../api/posts'
-import './Blog.scss'
 import BlogPost from '../BlogPost/BlogPost';
+import BlogPostForm from '../BlogPostForm/BlogPostForm'
+import { getPosts } from '../../api/posts'
+
+import './Blog.scss'
 
 class Blog extends React.Component {
 
@@ -53,6 +55,7 @@ class Blog extends React.Component {
         <Switch>
           <Route name="blogPost" path="/post/:id" render={blogPost} />
           <Route name="blogList" exact path="/" render={blogList} />
+          <Route name="blogPostForm" exact path="/new" component={BlogPostForm} />
           <Route component={() => <Redirect to="/" /> } /> 
         </Switch>
       </Container>

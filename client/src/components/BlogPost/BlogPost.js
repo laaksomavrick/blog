@@ -1,5 +1,4 @@
 import React from 'react';
-import { Row, Col } from 'reactstrap';
 import BlogPostHeader from '../BlogPostHeader/BlogPostHeader';
 
 class BlogPost extends React.Component {

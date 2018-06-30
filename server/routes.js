@@ -12,7 +12,7 @@ router.get('/posts', async (req, res) => {
     }
 });
 
-router.post('/post', async (req, res, next) => {
+router.post('/posts', async (req, res, next) => {
     try {
         const { body } = req;
         const post = new Models.Post(body);
