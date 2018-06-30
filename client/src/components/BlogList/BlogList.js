@@ -1,5 +1,7 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Row, Col } from 'reactstrap';
+import BlogPostHeader from '../BlogPostHeader/BlogPostHeader'
 
 class BlogList extends React.Component {
 
@@ -12,13 +14,11 @@ class BlogList extends React.Component {
     return (
       <div className="blog-list">
         {posts.map(post =>
-          <h1 key={post._id}>
-            <Row className="blog-post">
-              <Col>
-                {post.title}
-              </Col>
-            </Row>
-          </h1>
+          <Link to={ `/post/${post._id}` } key={post._id}>
+            <h1> 
+              <BlogPostHeader title={post.title} />
+            </h1>
+          </Link>
         )}
       </div>
     )

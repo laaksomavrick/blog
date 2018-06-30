@@ -1,18 +1,9 @@
 import React from 'react'
 
-class BlogHeader extends React.Component {
-
-  componentDidMount() {
-  }
-
-  render() {
-    return (
-      <div className="app">
-        <h1> Hello, world! </h1>
-      </div>
-    )
-  }
-
+const BlogHeader = (props) => {
+  return (
+    <h1>var self = this;</h1>
+  );
 }
 
 export default BlogHeader

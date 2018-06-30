@@ -1,9 +1,12 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import App from './components/App/App.js'
+import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom'
+import Blog from './components/Blog/Blog.js'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 ReactDOM.render(
-  <App />,
+  <Router>
+    <Blog />
+  </Router>,
   document.getElementById('root')
 )
