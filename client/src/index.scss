@@ -1,0 +1,16 @@
+$font-base: #232323;
+$background-base: #fafafa; 
+
+body {
+  color: $font-base;
+  background: $background-base;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+a:hover {
+  color: darken($font-base, 10%);
+}

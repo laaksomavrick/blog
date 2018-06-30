@@ -7,8 +7,6 @@ import BlogPost from '../BlogPost/BlogPost';
 import BlogPostForm from '../BlogPostForm/BlogPostForm'
 import { getPosts } from '../../api/posts'
 
-import './Blog.scss'
-
 class Blog extends React.Component {
 
   constructor(props) {

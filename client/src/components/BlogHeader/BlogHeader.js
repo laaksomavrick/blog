@@ -1,8 +1,14 @@
 import React from 'react'
+import './BlogHeader.scss'
 
 const BlogHeader = (props) => {
+  const base = "blog-header"
   return (
-    <h1>var self = this;</h1>
+    <div className={base}>
+      <h1 className={`${base}__text`}>
+        Mavrick Laakso
+      </h1>
+    </div>
   );
 }
 

@@ -24,9 +24,16 @@ class BlogPostForm extends React.Component {
     }
   }
 
+  valid = () => {
+    const condition = (val) => val !== '' && val !== null
+    return condition(this.state.title) && condition(this.state.body)
+  }
+
   handleSubmit = (e) => {
     e.preventDefault()
-    this.sendPost()
+    if (this.valid()) {
+      this.sendPost()
+    }
   }
 
   handleTitleChange = (e) => {
@@ -70,6 +77,9 @@ class BlogPostForm extends React.Component {
       null
     )
 
+    const valid = this.valid()
+    const buttonColor = this.valid() ? "primary" : "secondary"
+
     return (
       <Row>
         <Col>
@@ -97,7 +107,7 @@ class BlogPostForm extends React.Component {
                 onChange={this.handleBodyChange} 
               />
             </FormGroup>
-            <Button>Submit</Button>
+            <Button disabled={! valid} color={buttonColor}>Submit</Button>
           </Form>
           <div className="blog-post-alert mt-3">
             {alert}

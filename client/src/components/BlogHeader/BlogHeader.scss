@@ -1,0 +1,12 @@
+.blog-header {
+  display: flex;
+  justify-content: center;
+  margin-top: .5rem;
+
+  &__text {
+    /*background: linear-gradient(#F9D423, #FF4E50);*/
+    font-style: italic;
+    font-weight: 800;
+    padding: .5rem;
+  }
+}
