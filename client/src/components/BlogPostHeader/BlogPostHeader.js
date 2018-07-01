@@ -12,9 +12,9 @@ class BlogPostHeader extends React.Component {
     return (
       <Row className="blog-post-header">
         <Col>
-          <h2>
+          <h1>
             {title}
-          </h2>
+          </h1>
         </Col>
       </Row>
     )
