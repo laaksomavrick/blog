@@ -1,7 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Row, Col } from 'reactstrap';
+import { Alert } from 'reactstrap';
 import BlogPostHeader from '../BlogPostHeader/BlogPostHeader'
+import './BlogList.scss'
 
 class BlogList extends React.Component {
 
@@ -10,16 +11,26 @@ class BlogList extends React.Component {
   }
 
   render() {
-    const { posts } = this.props
+    const { posts, postCount, onGetPosts } = this.props
+    const alertVisible = posts.length < postCount
     return (
       <div className="blog-list">
         {posts.map(post =>
           <Link to={ `/post/${post._id}` } key={post._id}>
             <h1> 
-              <BlogPostHeader title={post.title} />
+              <BlogPostHeader title={post.title} time={post.createdAt} />
             </h1>
           </Link>
         )}
+        <Alert 
+          className="blog-list__load-more"
+          fade={false} 
+          color="secondary" 
+          isOpen={alertVisible}
+          onClick={onGetPosts}
+        >
+          Load more
+        </Alert>
       </div>
     )
   }

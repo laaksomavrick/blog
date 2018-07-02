@@ -5,34 +5,50 @@ import BlogList from '../BlogList/BlogList'
 import BlogHeader from '../BlogHeader/BlogHeader'
 import BlogPost from '../BlogPost/BlogPost';
 import BlogPostForm from '../BlogPostForm/BlogPostForm'
-import { getPosts } from '../../api/posts'
+import { getPosts, getPostsCount } from '../../api/posts'
 
 class Blog extends React.Component {
 
   constructor(props) {
     super(props)
     this.state = {
-      posts: []
+      posts: [],
+      postCount: 0,
+      page: 0,
+      limit: 7
     }
   }
 
   async componentDidMount() {
-    const posts = await getPosts();
+    await this.handleGetCount()
+    await this.handleGetPosts()
+  }
+
+  handleGetCount = async () => {
+    const newPostCount = await getPostsCount()
     this.setState({
-      posts
+      postCount: newPostCount.count
     })
   }
 
-  // make the font look like code
-  // header github colors
+  handleGetPosts = async () => {
+    const { page, limit, posts } = this.state
+    const newPosts = await getPosts(page, limit)
+    this.setState({
+      posts: posts.concat(newPosts),
+      page: page + 1
+    })
+  }
 
   render() {
 
-    const { posts } = this.state
+    const { posts, postCount } = this.state
 
     const blogList = (props) => (
       <BlogList
         posts={posts}
+        postCount={postCount}
+        onGetPosts={this.handleGetPosts}
         {...props}
       />
     )

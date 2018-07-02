@@ -1,5 +1,8 @@
-export const get = (url) => {
-  return fetch(`/api/${url}`, {
+import queryString from 'query-string'
+
+export const get = (url, params = null) => {
+  const query = params ? `?${queryString.stringify(params)}` : ''
+  return fetch(`/api/${url}${query}`, {
     headers: { "Content-Type": "application/json" },
     credentials: "same-origin"
   })

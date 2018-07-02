@@ -35,7 +35,7 @@ class BlogPost extends React.Component {
     const { post } = this.props
     return (
       <div className="blog-post">
-        <BlogPostHeader title={post.title} />
+        <BlogPostHeader title={post.title} time={post.createdAt} />
         <div className="blog-post-body">
           <ReactMarkdown source={post.body} renderers={{CodeBlock: CodeBlock}} />
         </div>

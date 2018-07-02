@@ -4,6 +4,10 @@
   margin-top: 1rem;
   margin-bottom: 1rem;
 
+  &__href {
+    flex: 1;
+  }
+
   &__text {
     margin: auto;
     background: linear-gradient(#F9D423, #FF4E50);
@@ -12,5 +16,6 @@
     padding: .5rem;
     font-size: 48px;
     cursor: pointer;
+    text-align: center;
   }
 }

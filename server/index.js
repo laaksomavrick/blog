@@ -18,12 +18,12 @@ app.use('/api', routes)
 
 app.get('*', (req, res) => {
   const data = { error: 'Route not found'}
-  res.status(404).json(data)
+  res.sendStatus(404).json(data)
 })
 
 app.use((err, req, res, next) => {
   const error = err.toString()
-  res.status(500).send({ error })
+  res.sendStatus(500).send({ error })
 })
 
 db.on('error', console.error.bind(console, 'connection error: '))
