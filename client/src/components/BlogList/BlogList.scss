@@ -6,4 +6,24 @@
     text-align: center;
   }
 
+  &__post {
+
+    &:first-child {
+      margin-top: 0px;
+      margin-bottom: 10px;
+    }
+
+    &:last-child {
+      margin-top: 10px;
+      margin-bottom: 0px;
+    }
+
+    & {
+      margin-top: 10px;
+      margin-bottom: 10px;      
+    }
+
+
+  }
+
 }

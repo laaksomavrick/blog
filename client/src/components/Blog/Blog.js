@@ -14,6 +14,7 @@ class Blog extends React.Component {
     this.state = {
       posts: [],
       postCount: 0,
+      working: false,
       page: 0,
       limit: 7
     }
@@ -32,23 +33,26 @@ class Blog extends React.Component {
   }
 
   handleGetPosts = async () => {
+    this.setState({ working: true })
     const { page, limit, posts } = this.state
     const newPosts = await getPosts(page, limit)
     this.setState({
       posts: posts.concat(newPosts),
-      page: page + 1
+      page: page + 1,
+      working: false
     })
   }
 
   render() {
 
-    const { posts, postCount } = this.state
+    const { posts, postCount, working } = this.state
 
     const blogList = (props) => (
       <BlogList
         posts={posts}
         postCount={postCount}
         onGetPosts={this.handleGetPosts}
+        working={working}
         {...props}
       />
     )

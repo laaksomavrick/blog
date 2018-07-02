@@ -4,6 +4,7 @@ $background-base: #fafafa;
 body {
   color: $font-base;
   background: $background-base;
+  overflow-y: overlay;
 }
 
 a {

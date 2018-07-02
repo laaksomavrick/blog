@@ -1,8 +1,10 @@
 import React from 'react'
-import BlogPostHeader from '../BlogPostHeader/BlogPostHeader'
 import ReactMarkdown from 'react-markdown'
 import Prism from 'prismjs'
 import 'prismjs/themes/prism-okaidia.css';
+import BlogPostHeader from '../BlogPostHeader/BlogPostHeader'
+import BlogPostSubheader from '../BlogPostSubheader/BlogPostSubheader';
+import './BlogPost.scss'
 
 const CodeBlock = (props) => {
   const html = Prism.highlight(props.literal, Prism.languages[props.language])
@@ -35,7 +37,8 @@ class BlogPost extends React.Component {
     const { post } = this.props
     return (
       <div className="blog-post">
-        <BlogPostHeader title={post.title} time={post.createdAt} />
+        <BlogPostHeader title={post.title}/>
+        <BlogPostSubheader time={post.createdAt} />
         <div className="blog-post-body">
           <ReactMarkdown source={post.body} renderers={{CodeBlock: CodeBlock}} />
         </div>

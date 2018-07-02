@@ -16,12 +16,9 @@ class BlogPostHeader extends React.Component {
     return (
       <Row className="blog-post-header">
         <Col>
-          <h1>
+          <h1 className="blog-post-header__title">
             {title}
           </h1>
-          <div className="blog-post-header__time">
-            {naturalDate}
-          </div>
         </Col>
       </Row>
     )
